@@ -21,7 +21,7 @@ namespace Assignment2
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    // Dit is een test
+                    
                 });
     }
 }
