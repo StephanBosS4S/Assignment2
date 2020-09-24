@@ -1,7 +1,7 @@
 # ASP.NET
 
 # Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:
+# Add steps that publish symbols, save build artifacts, deploy  and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
@@ -39,7 +39,7 @@ steps:
     searchFolder: '$(System.DefaultWorkingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(build.artifactStagingDirectory)' 
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
@@ -47,3 +47,11 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Gratis versie(a9e3e62b-1154-433b-acd7-4c6747737e50)'
+    appType: 'webApp'
+    WebAppName: 'assignment2-stephan'
+    packageForLinux: '$(build.artifactStagingDirectory)/**/Assignment2.zip'
