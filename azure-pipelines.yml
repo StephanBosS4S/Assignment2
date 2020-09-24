@@ -39,7 +39,7 @@ steps:
     searchFolder: '$(System.DefaultWorkingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    PathtoPublish: '$(build.artifactStagingDirectory)/**/Assignment2.zip' 
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
